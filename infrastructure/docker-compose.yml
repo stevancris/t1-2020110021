@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  # app:
+  #   container_name: app
+  #   image: bitnami/mysql:8.1.0
+  #   networks:
+  #     - pbwl
+  #   depends_on:
+  #     - db
+  db:
+    container_name: db
+    image: bitnami/mysql:8.1.0
+    volumes:
+      - mysql_data:/bitnami/mysql/data
+    environment:
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_AUTHENTICATION_PLUGIN=mysql_native_password
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    healthcheck:
+      test: ['CMD', '/opt/bitnami/scripts/mysql/healthcheck.sh']
+      interval: 15s
+      timeout: 5s
+      retries: 6
+    networks:
+      - pbwl
+    ports:
+      - 6033:3306
+  # ngrok:
+  #   container_name: ngrok
+  #   image: ngrok/ngrok:latest 
+  #   restart: unless-stopped
+  #   command: ["start", "--all", "--config", "/etc/ngrok.yaml"]
+  #   volumes:
+  #     - $PWD//ngork/ngrok.yaml:/etc/ngrok.yaml
+  #   ports:
+  #     - 4040:4040
+  # nginx:
+  #   container_name: nginx
+  #   image: nginx:alpine3.18-slim
+networks:
+  pbwl:
+    driver: bridge
+volumes:
+  mysql_data:
+    driver: local

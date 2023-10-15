@@ -1,0 +1,5 @@
+tunnels:
+  blog:
+    proto: http
+    addr: 8000
+    hostname: blog.ngrok.io
