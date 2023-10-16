@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-});
+// Route::get('/', function () {
+//     return view('landing');
+// });
 
 
-Route::get('/book', [App\Http\Controllers\BookController::class, 'index']);
-Route::post('/book', [App\Http\Controllers\BookController::class, 'store']);
+Route::get('/', [App\Http\Controllers\BookController::class, 'index']);
+Route::post('/', [App\Http\Controllers\BookController::class, 'store']);
