@@ -4,6 +4,11 @@
     <div class="mt-4 p-5 bg-primary text-white rounded">
         <h1>List of Books</h1>
     </div>
+    @if (session()->has('success'))
+    <div class="alert alert-success mt-4">
+        {{ session()->get('success') }}
+    </div>
+    @endif
     @if ($errors->any())
         <div class="alert alert-danger mt-4">
             <ul>
