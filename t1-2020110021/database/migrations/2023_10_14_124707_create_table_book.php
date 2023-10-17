@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('book', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->char('isbn', 13);
-            $table->string('judul')->nullabel(false);
-            $table->integer('halaman')->unsigned()->nullable(false)->default(0);
+            $table->char('no_isbn', 13);
+            $table->string('judul_buku')->nullabel(false);
+            $table->integer('total_halaman')->unsigned()->nullable(false)->default(0);
             $table->string('kategori')->default('uncategorized');
             $table->string('penerbit')->nullabel(false);
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('book');
+        Schema::dropIfExists('books');
     }
 };

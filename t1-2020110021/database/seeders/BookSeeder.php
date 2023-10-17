@@ -17,21 +17,21 @@ class BookSeeder extends Seeder
         // Buat 25 artikel dummy
         for ($i = 0; $i < 25; $i++) {
             // Generate nomor 13 angka
-            $isbn = $faker->randomNumber();
+            $no_isbn = $faker->randomNumber();
             // Generate link untuk url gambar
-            $judul = $faker->sentence();
+            $judul_buku = $faker->sentence();
             // Generate paragraf dengan panjang 20 kalimat
-            $halaman = $faker->randomNumber();
+            $total_halaman = $faker->randomNumber();
             // Generate angka acak antara 0 hingga 100
             $kategori = $faker->sentence();
             $penerbit = $faker->sentence();
             // Generate DateTime antara 3 bulan lall
             $created_at = $faker->dateTimeBetween('-1 years', '-3 months');
 
-            DB::table('book')->insert([
-                'isbn' => $isbn,
-                'judul' => $judul,
-                'halaman' => $halaman,
+            DB::table('books')->insert([
+                'no_isbn' => $no_isbn,
+                'judul_buku' => $judul_buku,
+                'total_halaman' => $total_halaman,
                 'kategori' => $kategori,
                 'penerbit' => $penerbit,
                 'created_at' => $created_at,
